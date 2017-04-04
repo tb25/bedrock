@@ -9,7 +9,7 @@
 
 $color-firefox-light-orange: #ff9500;
 
-$mq-nav-tablet:     'screen and (min-width: 880px)';
+$mq-nav-tablet:     'screen and (min-width: 840px)';
 $mq-nav-desktop:    'screen and (min-width: 1070px)';
 
 /* -------------------------------------------------------------------------- */
@@ -97,22 +97,24 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
         height: 25px;
         margin: 0 0 0 10px;
         padding: 13px 0;
-        transition: fill 0.1s ease-in-out;
 
         a {
+            @include image-replaced;
+            background: url('/media/img/favicon/favicon-196x196.png') top left no-repeat;
+            @include background-size(25px 25px);
             display: block;
+            width: 25px;
             height: 25px;
-
-            &:hover .p,
-            &:focus .p,
-            &:active .p {
-                fill: #646464;
-                transition: fill 0.1s ease-in-out;
-            }
         }
 
         @media #{$mq-nav-desktop} {
             margin-left: 17px;
+
+            a {
+                @include background-size(auto, auto);
+                background-image: url('/media/img/pebbles/moz-wordmark-dark-reverse.svg');
+                width: 78px;
+            }
         }
     }
 
@@ -120,9 +122,13 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
     .nav-horizontal-menu {
         @include clearfix;
         margin-left: 10px;
-        padding: 40px 0 10px;
+        padding: 20px 0 10px;
         position: relative;
         overflow: hidden;
+
+        @media #{$mq-nav-tablet} {
+            padding-top: 40px;
+        }
 
         @media #{$mq-nav-desktop} {
             margin-left: 17px;
@@ -197,10 +203,10 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
     bottom: 0;
     color: #fff;
     left: -320px;
-    padding: 20px 42px;
+    padding: 20px;
     position: absolute;
     top: 0;
-    width: 236px;
+    width: 280px;
     z-index: 1000;
 
     a:link,
@@ -230,20 +236,63 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
         -moz-appearance: none;
         -webkit-appearance: none;
         @include font-size(13px);
-        background: url('/media/img/nav/drawer-close.svg') left center no-repeat;
+        background-color: #000;
         border: none;
-        color: #000;
         height: 22px;
-        left: 10px;
-        margin-top: 30px;
-        padding: 0 0 0 30px;
+        margin: 30px 0 0 22px;
+        padding: 0;
         text-transform: uppercase;
-        transition: color 0.1s ease-in-out;
 
-        &:hover,
-        &:focus {
-            transition: color 0.1s ease-in-out;
-            color: #fff;
+        .rect {
+            transform-origin: center center;
+        }
+
+        .center {
+            transform: rotate(45deg);
+        }
+
+        .top-left {
+            transform: translate(-7px, -7px) rotate(45deg);
+        }
+
+        .top-right {
+            transform: translate(7px, -7px) rotate(45deg);
+        }
+
+        .bottom-left {
+            transform: translate(-7px, 7px) rotate(45deg);
+        }
+
+        .bottom-right {
+            transform: translate(7px, 7px) rotate(45deg);
+        }
+
+        @media #{$mq-nav-desktop} {
+
+            .rect {
+                transition: transform .12s ease-in-out;
+                transform: translate(0, 0) rotate(45deg);
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                .top-left {
+                    transform: translate(-7px, -7px) rotate(45deg);
+                }
+
+                .top-right {
+                    transform: translate(7px, -7px) rotate(45deg);
+                }
+
+                .bottom-left {
+                    transform: translate(-7px, 7px) rotate(45deg);
+                }
+
+                .bottom-right {
+                    transform: translate(7px, 7px) rotate(45deg);
+                }
+            }
         }
 
         &:focus {
@@ -255,8 +304,18 @@ $mq-nav-desktop:    'screen and (min-width: 1070px)';
         }
     }
 
+    .nav-menu-inner-container {
+        margin-top: 42px;
+        position: relative;
+    }
+
+    .nav-menu-scroll-pane {
+        padding: 0 22px;
+        width: 234px;
+    }
+
     .nav-menu-primary-links {
-        padding-top: 30px;
+        padding-bottom: 40px;
 
         &> li {
             margin: 20px 0;
@@ -409,12 +468,24 @@ html.moz-nav-open .moz-global-nav-page-mask {
         @include font-size(14px);
         background: inherit;
         border-radius: 0;
-        border: 1px solid $color-firefox-light-orange;
-        color: darken($color-firefox-light-orange, 5%);
+        border: none;
+        color: #646464;
         display: inline-block;
-        padding: 13px 10px;
+        padding: 14px 10px;
         text-decoration: none;
         transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+
+        .download-title {
+            font-weight: bold;
+
+            &:before {
+                @include font-size(16px);
+                color: $color-firefox-light-orange;
+                content: "\2193\00A0"; // downward-arrow+space
+                transition: color 0.1s ease-in-out;
+                white-space: nowrap;
+            }
+        }
 
         &:hover,
         &:focus,
@@ -422,16 +493,20 @@ html.moz-nav-open .moz-global-nav-page-mask {
             background-color: $color-firefox-light-orange;
             color: #fff;
             transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+
+            .download-title:before {
+                color: #fff;
+                transition: color 0.1s ease-in-out;
+            }
         }
     }
 
     @media #{$mq-nav-desktop} {
-        margin-right: 42px;
 
         .download-link {
             &:link,
             &:visited {
-                padding: 13px 20px;
+                padding: 14px 20px;
             }
         }
     }
@@ -485,13 +560,13 @@ html.moz-nav-open .moz-global-nav-page-mask {
 
 // Default (non-animated) drawer for old browsers.
 body {
-    position: relative;
     overflow-x: hidden;
 }
 
 html.moz-nav-open {
     body {
         left: 320px;
+        position: relative;
     }
 }
 
@@ -503,6 +578,7 @@ html.moz-nav-open {
     }
 
     html.moz-nav-open {
+
         body {
             left: 0;
             transition: transform .25s ease-in-out;
@@ -520,6 +596,50 @@ html.moz-nav-open {
         transform: translateX(-320px);
         transition: visibility 0s .4s;
         visibility: hidden;
+    }
+
+    @media #{$mq-nav-desktop} {
+        html.moz-nav-open {
+            height: 100%;
+
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+        }
+
+        .moz-global-nav-drawer {
+            bottom: auto;
+            height: 100%;
+
+            .nav-menu-inner-container {
+                height: 100%;
+                margin-top: 22px;
+            }
+
+            .nav-menu-scroll-pane {
+                bottom: 100px;
+                overflow-y: scroll;
+                position: absolute;
+                top: 0;
+
+                &::-webkit-scrollbar {
+                    width: 8px;
+                    height: 100%;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: #000;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    width: 8px;
+                    height: 8px;
+                    background: #999;
+                    border-radius: 8px;
+                }
+            }
+        }
     }
 }
 
