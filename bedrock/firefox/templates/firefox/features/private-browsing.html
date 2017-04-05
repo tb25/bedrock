@@ -1,0 +1,63 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "firefox/features/base.html" %}
+
+{% block page_title %} — {{ _('Private Browsing') }}{% endblock %}
+{% block page_desc %}{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') }}{% endblock %}
+
+{% block page_css %}
+  {% stylesheet 'firefox-features-hub-detail' %}
+{% endblock %}
+
+{% block features_header %}
+<header class="header-intro">
+  <div class="content">
+    <h1>{{ _('Let’s get our privacy on!') }}</h1>
+    <p>
+      {{ _('We love it when you take control. With Firefox’s Private Browser you’re in charge of your data, not advertisers.') }}
+    </p>
+    <a href="{{ url('firefox.private-browsing') }}">{{ _('Launch Private Browser') }}</a>
+  </div>
+</header>
+{% endblock %}
+
+{% block features_showcase %}
+<section class="main-feature">
+  <div class="content">
+    <div class="main-feature-container">
+      <div class="main-feature-image"></div>
+
+      <h2>{{ _('Browse like no one’s watching') }}</h2>
+      <p>{{ _('Because with the Firefox Private Browser, you decide who sees what. Our powerful privacy tools clear out not only your browser history, but also take care of those ads that just don’t know when to quit.') }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block features_list %}
+<section class="features-list-section">
+  <div class="content">
+    <h2>{{ _('Feature intro statement') }}</h2>
+
+    <ul class="features-list">
+      <li class="features-list-item">
+        <a href="{{ url('firefox.features.index') }}">
+          <div class="features-list-image"></div>
+          <h3>{{ _('Shake it off') }}</h3>
+          <p>{{ _('Yup, you have seen that ad everywhere. To get rid of it, Firefox not only blocks the ads you see right now, but also keeps them from popping up repeatedly. So drop that ad baggage and back to browsing faster.') }}</p>
+        </a>
+      </li>
+      <li class="features-list-item">
+        <a href="{{ url('firefox.features.index') }}">
+          <div class="features-list-image"></div>
+          <h3>{{ _('Trackers have zero chill') }}</h3>
+          <p>{{ _('Some websites attach trackers to collect your info long after you’ve left their page. Firefox Tracking Protection* finds and blocks them automatically, so you can browse freely.') }}</p>
+          <p><em>*Tracking Protection is only available with Firefox for Android and Desktop.</em></p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+{% endblock %}

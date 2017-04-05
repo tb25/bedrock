@@ -14,6 +14,7 @@ class BlogPostsMixin(object):
             blog = BlogPost.objects.filter_by_blog(self.blog_slug)
             if self.blog_tags:
                 blog = blog.filter_by_tags(*self.blog_tags)
+                ctx['blog_tags'] = self.blog_tags
 
             ctx['blog_posts'] = blog
         else:

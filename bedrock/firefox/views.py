@@ -26,9 +26,11 @@ from lib import l10n_utils
 from bedrock.base.urlresolvers import reverse
 from bedrock.firefox.firefox_details import firefox_desktop, firefox_android
 from bedrock.firefox.forms import SendToDeviceWidgetForm
+from bedrock.mozorg.models import BlogArticle
 from bedrock.mozorg.util import HttpResponseJSON
 from bedrock.newsletter.forms import NewsletterFooterForm
 from bedrock.releasenotes import version_re
+from bedrock.wordpress.views import BlogPostsView
 
 
 UA_REGEXP = re.compile(r"Firefox/(%s)" % version_re)
@@ -522,3 +524,21 @@ def ios_testflight(request):
     return l10n_utils.render(request,
                              'firefox/testflight.html',
                              {'newsletter_form': newsletter_form})
+
+
+class FeaturesPrivateBrowsingView(BlogPostsView):
+    blog_slug = 'firefox'
+    blog_tags = ['privacy', 'security']
+    template_name = 'firefox/features/private-browsing.html'
+
+
+class FeaturesIndependentView(BlogPostsView):
+    blog_slug = 'firefox'
+    blog_tags = ['browser']
+    template_name = 'firefox/features/independent.html'
+
+
+class FeaturesFastView(BlogPostsView):
+    blog_slug = 'firefox'
+    blog_tags = ['fastest', 'jank', 'scrolling']
+    template_name = 'firefox/features/fast.html'
