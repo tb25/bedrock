@@ -1,0 +1,192 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import '../pebbles/includes/lib';
+@import '../pebbles/components/newsletter';
+@import '../pebbles/components/modal';
+
+.feature-image {
+    background-color: rgba(0, 0, 0, .1);
+    height: 165px;
+    width: 300px;
+    max-width: 100%;
+    text-align: center;
+
+        @media #{$mq-tablet} {
+            width: 600px;
+            height: 330px;
+        }
+}
+
+.cta {
+    @include font-size(18px);
+    font-weight: bold;
+
+    a {
+        @include trailing-arrow;
+    }
+}
+
+.page-intro {
+    background-color: #eee;
+
+    .hero-image {
+        background: rgba(0, 0, 0, .1);
+        height: 200px;
+        text-align: center;
+    }
+
+    @media #{$mq-tablet} {
+        padding: 60px 0;
+
+        .intro-content {
+            width: 45%;
+            float: left;
+        }
+
+        .hero-image {
+            width: 50%;
+            height: 400px;
+            float: right;
+        }
+    }
+}
+
+.feature-main {
+    text-align: center;
+
+    .content {
+        max-width: $width-desktop;
+    }
+
+    .feature-image {
+        margin: 2em auto;
+
+        @media #{$mq-desktop} {
+            width: 800px;
+            height: 440px;
+        }
+    }
+}
+
+.feature-sub {
+    .copy,
+    .feature-image {
+        @include span(6);
+    }
+}
+
+.feature-sub-one {
+    background-color: #eee;
+}
+
+.extra-features {
+    background-color: #eee;
+
+    @supports (display: flex) {
+        .features-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .feature {
+                padding: 20px;
+                flex: 1 0 calc(33% - 40px);
+            }
+
+            .feature-image {
+                width: 100%;
+                height: 220px;
+                margin-bottom: 2em;
+            }
+        }
+    }
+
+    @supports (display: grid) {
+        .features-list .feature {
+            display: grid;
+            grid-template-rows: [image] 240px [headline] min-content [blurb] min-content [cta] 1fr;
+        }
+
+        .cta {
+            grid-row: cta;
+            align-self: end;
+        }
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+// Related content CTAs
+
+.related-content {
+    position: relative;
+}
+
+.related-content-item {
+    text-align: center;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    p {
+        max-width: 20em;
+        margin: 0 auto 20px;
+    }
+
+    .related-content-item-container {
+        padding: 20px;
+    }
+
+    &:first-child .related-content-item-container {
+        border-bottom: 1px solid #ccc;
+    }
+
+    @media #{$mq-tablet} {
+        width: 50%;
+        float: left;
+
+        .related-content-item-container {
+            padding: 40px;
+        }
+
+        &:first-child .related-content-item-container {
+            border-bottom: none;
+            border-right: 1px solid #ccc;
+        }
+    }
+}
+
+.fx-privacy-link {
+    a:link,
+    a:visited {
+        color: inherit;
+    }
+}
+
+#newsletter-form {
+    input[type="email"] {
+        width: 100%;
+    }
+
+    #form-details {
+        padding-top: 20px;
+    }
+
+    button[type="submit"] {
+        margin-top: 20px;
+    }
+}
+
+
+// Send to device
+.send-to {
+    padding: 20px;
+    border: 2px solid rgba(0, 0, 0, .1);
+
+    .form-heading {
+        @include font-size-level4;
+    }
+}

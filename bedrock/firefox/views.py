@@ -522,3 +522,36 @@ def ios_testflight(request):
     return l10n_utils.render(request,
                              'firefox/testflight.html',
                              {'newsletter_form': newsletter_form})
+
+
+def product_desktop(request, template='firefox/desktop/index.html'):
+    locale = l10n_utils.get_locale(request)
+
+    if locale.startswith('en-'):
+        template = 'firefox/desktop-new.html'
+    else:
+        template = 'firefox/desktop/index.html'
+
+    return l10n_utils.render(request, template)
+
+
+def product_android(request, template='firefox/android/index.html'):
+    locale = l10n_utils.get_locale(request)
+
+    if locale.startswith('en-'):
+        template = 'firefox/android-new.html'
+    else:
+        template = 'firefox/android/index.html'
+
+    return l10n_utils.render(request, template)
+
+
+def product_ios(request, template='firefox/ios.html'):
+    locale = l10n_utils.get_locale(request)
+
+    if locale.startswith('en-'):
+        template = 'firefox/ios-new.html'
+    else:
+        template = 'firefox/ios.html'
+
+    return l10n_utils.render(request, template)

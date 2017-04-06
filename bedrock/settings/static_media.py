@@ -566,6 +566,13 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox_private_browsing-bundle.css',
     },
+    'firefox_product': {
+        'source_filenames': (
+#            'css/base/send-to-device-micro.less',
+            'css/firefox/product.scss',
+        ),
+        'output_filename': 'css/firefox_product-bundle.css',
+    },
     'firefox_releases_index': {
         'source_filenames': (
             'css/base/menu-resp.less',

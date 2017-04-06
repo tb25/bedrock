@@ -1,0 +1,128 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "base-pebbles.html" %}
+
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}{{ _('Free Web Browser for Mac, Windows, Linux — Firefox') }}{% endblock %}
+{% block page_desc %}{{ _('Millions of people around the world trust Firefox Web browsers on Mac, Windows and Linux computers. Fast. Private. Download now!') }}{% endblock %}
+
+{% block page_css %}
+  {% stylesheet 'firefox_product' %}
+{% endblock %}
+
+{% block optimizely %}
+  {% if switch('firefox-desktop-optimizely') %}
+    {% include 'includes/optimizely.html' %}
+  {% endif %}
+{% endblock %}
+
+
+{% block content %}
+<main role="main">
+  <section class="section page-intro">
+    <div class="content">
+
+      <div class="intro-content">
+        <h1>Firefox browser for Windows, macOS and Linux</h1>
+        <h2>Committed to you, your privacy and an open Web.</h2>
+
+        <div>
+          {{ download_firefox() }}
+        </div>
+      </div>
+
+      <div class="hero-image">hero image</div>
+
+    </div>
+  </section>
+
+  <section class="section feature-main">
+    <div class="content">
+      <h2>Showcase a Key Feature</h2>
+      <div class="feature-image">video perhaps?</div>
+      <p>We all knew it contained spider eggs, but the hantavirus? That came out
+        of left field. So if you’re experiencing numbness and/or comas, send five
+        dollars to Antidote, PO box…</p>
+      <p class="cta"><a href="#">Learn more</a></p>
+    </div>
+  </section>
+
+  <section class="section feature-sub feature-sub-one">
+    <div class="content">
+      <div class="copy">
+        <h2>Major Feature 2</h2>
+        <p>I only ever read one book, “To Kill A Mockingbird,” and it gave me absolutely
+          no insight on how to kill mockingbirds! Sure it taught me not to judge a man
+          by the color of his skin… but what good does <em>that</em> do me?</p>
+        <p class="cta"><a href="#">Learn more</a></p>
+      </div>
+
+      <div class="feature-image">image</div>
+    </div>
+  </section>
+
+  <section class="section feature-sub feature-sub-two">
+    <div class="content">
+      <div class="copy">
+        <h2>Major Feature 3</h2>
+        <p>How is education supposed to make me feel smarter? Besides, every time I
+          learn something new, it pushes some old stuff out of my brain. Remember when
+          I took that home winemaking course, and I forgot how to drive?</p>
+        <p class="cta"><a href="#">Learn more</a></p>
+      </div>
+
+      <div class="feature-image">image</div>
+    </div>
+  </section>
+
+  <section class="section extra-features">
+    <ul class="content features-list">
+      <li class="feature">
+        <div class="feature-image">icon</div>
+        <h3>A Feature</h3>
+        <p>Shoplifting is a victimless crime. Like punching someone in the dark.</p>
+        <p class="cta"><a href="#">Learn more</a></p>
+      </li>
+
+      <li class="feature">
+        <div class="feature-image">icon</div>
+        <h3>Another Feature With A Longer Headline</h3>
+        <p>Well, he’s kind of had it in for me ever since I accidentally ran over his dog. Actually, replace “accidentally” with “repeatedly” and replace “dog” with “son.”</p>
+        <p class="cta"><a href="#">Learn more</a></p>
+      </li>
+
+      <li class="feature">
+        <div class="feature-image">icon</div>
+        <h3>One More Feature</h3>
+        <p>What good is money if it can’t inspire terror in your fellow man?</p>
+        <p class="cta"><a href="#">Learn more</a></p>
+      </li>
+    </ul>
+  </section>
+
+  <aside id="related" class="related-content">
+    <div class="content">
+      <section class="related-content-item">
+        <div class="related-content-item-container">
+          <h2>{{ _('Get Firefox for desktop today') }}</h2>
+          <p>{{ _('Firefox is faster, more private, and always independent. Available on desktop and mobile.') }}</p>
+          {{ download_firefox(dom_id='features-footer-download-firefox') }}
+        </div>
+      </section>
+      <section class="related-content-item">
+        <div class="related-content-item-container">
+          <h2>{{ _('Keep up with all things Firefox') }}</h2>
+          <p>Oh, a <em>sarcasm</em> detector. Oh, that's a <em>really</em> useful invention!</p>
+          {{ email_newsletter_form(include_title=False, spinner_color='#000', button_class='button-hollow') }}
+        </div>
+      </section>
+    </div>
+  </aside> {#--/#related--#}
+
+
+</main>
+{% endblock %}
+
+{% block js %}{% endblock %}
